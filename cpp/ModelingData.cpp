@@ -1,6 +1,15 @@
 #include "ModelingData.h"
+#include <algorithm>  
 
-
+void transferElements(const std::vector<float>& source, std::vector<float>& destination, int startIndex, int numElements) {
+	// é¦–å…ˆæ£€æŸ¥æ˜¯å¦è¶Šç•Œ  
+	if (startIndex < 0 || startIndex + numElements > source.size()) {
+		throw std::out_of_range("Index out of range");
+	}
+	startIndex = startIndex * 6;
+	// ä½¿ç”¨ std::copy å¤åˆ¶å…ƒç´   
+	std::copy(source.begin() + startIndex, source.begin() + startIndex + numElements, std::back_inserter(destination));
+}
 void modelingData::print_coordinate(Solid* solid)
 {
 	{
@@ -31,7 +40,7 @@ Face* modelingData::build_face()
 	in.open("in.txt");
 	int loop_cnt;
 	in >> loop_cnt;
-	// Íâ»·
+	// å¤–ç¯
 	int vtx_cnt;
 	in >> vtx_cnt;
 	double x, y, z;
@@ -48,7 +57,7 @@ Face* modelingData::build_face()
 
 	}
 	EulerOperation::mef(prvv, solid->sorigin, face);
-	// ÄÚ»·
+	// å†…ç¯
 	for (int i = 1; i < loop_cnt; i++) {
 		in >> vtx_cnt;
 		prvv = solid->sorigin;
@@ -79,20 +88,77 @@ vector<float> modelingData::build_vertex_array(Solid* solid)
 	uniform_real_distribution<float> float_rand(0.0, 1.0);
 
 	for (int i = 0; i < faces.size(); i++) {
-		// Í¬Ò»¸öÃæµÄµãÉú³ÉÍ¬Ò»ÖÖrgbÑÕÉ«
+		// åŒä¸€ä¸ªé¢çš„ç‚¹ç”ŸæˆåŒä¸€ç§rgbé¢œè‰²
 		float r = float_rand(engine);
 		float g = float_rand(engine);
 		float b = float_rand(engine);
 
 		vector<Loop*> loops = faces[i]->floops;
 
-		// Èç¹ûÒ»¸öÃæÓĞ¶à¸ö»·£¬¾Í²»»æÖÆÕâ¸öÃæ
+		// å¦‚æœä¸€ä¸ªé¢æœ‰å¤šä¸ªç¯
 		if (loops.size() > 1)
-			continue;
+		{	
+			vector<float> all_vertices;
+			r = float_rand(engine);
+			g = float_rand(engine);
+			b = float_rand(engine);
+			for (int j = 0; j < loops.size(); j++) {
+				Loop* loop = loops[j];
+				HalfEdge* he = loop->ledge;
+				HalfEdge* src_edge = he;
 
+				vector<float> tmp;
+
+				tmp.push_back((float)he->startv->x);
+				tmp.push_back((float)he->startv->y);
+				tmp.push_back((float)he->startv->z);
+				tmp.push_back(r);
+				tmp.push_back(g);
+				tmp.push_back(b);
+				he = he->nxt;
+				while (he != src_edge) {
+					tmp.push_back((float)he->startv->x);
+					tmp.push_back((float)he->startv->y);
+					tmp.push_back((float)he->startv->z);
+					tmp.push_back(r);
+					tmp.push_back(g);
+					tmp.push_back(b);
+					he = he->nxt;
+				}
+				for (int k = 0; k < tmp.size() / 6 - 2; k++) {
+					for (int t = 0; t < 6; t++) {
+						all_vertices.push_back(tmp[t]);
+					}
+					for (int t = (k + 1) * 6; t < (k + 1) * 6 + 12; t++) {
+						all_vertices.push_back(tmp[t]);
+					}
+				}
+			}	
+			if (i == 0)
+			{
+				transferElements(all_vertices, vertices, 2, 6); transferElements(all_vertices, vertices, 5, 6); transferElements(all_vertices, vertices, 6, 6);
+				transferElements(all_vertices, vertices, 2, 6); transferElements(all_vertices, vertices, 1, 6); transferElements(all_vertices, vertices, 6, 6);
+				transferElements(all_vertices, vertices, 5, 6); transferElements(all_vertices, vertices, 6, 6); transferElements(all_vertices, vertices, 8, 6);
+				transferElements(all_vertices, vertices, 5, 6); transferElements(all_vertices, vertices, 0, 6); transferElements(all_vertices, vertices, 8, 6);
+				transferElements(all_vertices, vertices, 0, 6); transferElements(all_vertices, vertices, 7, 6); transferElements(all_vertices, vertices, 8, 6);
+				transferElements(all_vertices, vertices, 0, 6); transferElements(all_vertices, vertices, 7, 6); transferElements(all_vertices, vertices, 1, 6);
+				transferElements(all_vertices, vertices, 1, 6); transferElements(all_vertices, vertices, 7, 6); transferElements(all_vertices, vertices, 6, 6);
+			}
+			else
+			{
+				transferElements(all_vertices, vertices, 0, 6); transferElements(all_vertices, vertices, 5, 6); transferElements(all_vertices, vertices, 8, 6);
+				transferElements(all_vertices, vertices, 0, 6); transferElements(all_vertices, vertices, 1, 6); transferElements(all_vertices, vertices, 8, 6);
+				transferElements(all_vertices, vertices, 1, 6); transferElements(all_vertices, vertices, 7, 6); transferElements(all_vertices, vertices, 8, 6);
+				transferElements(all_vertices, vertices, 1, 6); transferElements(all_vertices, vertices, 7, 6); transferElements(all_vertices, vertices, 3, 6);
+				transferElements(all_vertices, vertices, 3, 6); transferElements(all_vertices, vertices, 7, 6); transferElements(all_vertices, vertices, 6, 6);
+				transferElements(all_vertices, vertices, 3, 6); transferElements(all_vertices, vertices, 5, 6); transferElements(all_vertices, vertices, 6, 6);
+				transferElements(all_vertices, vertices, 5, 6); transferElements(all_vertices, vertices, 8, 6); transferElements(all_vertices, vertices, 6, 6);
+			};
+		}
+		else
 		for (int j = 0; j < loops.size(); j++) {
 
-			// Í¬Ò»¸ö»·ÉÏµÄµãÉú³ÉÍ¬Ò»ÖÖÑÕÉ«
+			// åŒä¸€ä¸ªç¯ä¸Šçš„ç‚¹ç”ŸæˆåŒä¸€ç§é¢œè‰²
 			r = float_rand(engine);
 			g = float_rand(engine);
 			b = float_rand(engine);
@@ -100,7 +166,7 @@ vector<float> modelingData::build_vertex_array(Solid* solid)
 			Loop* loop = loops[j];
 			HalfEdge* he = loop->ledge;
 			HalfEdge* src_edge = he;
-
+			 
 			vector<float> tmp;
 
 			tmp.push_back((float)he->startv->x);
@@ -130,7 +196,7 @@ vector<float> modelingData::build_vertex_array(Solid* solid)
 			}
 		}
 	}
-	// ¹æ·¶»¯£¬½«µãµÄ×ø±êÏŞÖÆÔÚ[-1,1]·¶Î§ÄÚ
+	// è§„èŒƒåŒ–ï¼Œå°†ç‚¹çš„åæ ‡é™åˆ¶åœ¨[-1,1]èŒƒå›´å†…
 	float max_val = *max_element(vertices.begin(), vertices.end());
 	float min_val = *min_element(vertices.begin(), vertices.end());
 	float max_abs = max_val + min_val > 0 ? max_val : -min_val;
