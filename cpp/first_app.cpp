@@ -127,6 +127,7 @@ namespace lve
     std::unique_ptr<LveModel> createCubeModel(LveDevice& device, glm::vec3 offset) {
         modelingData sample;
         std::vector<float> v = sample.printv();
+        sample.print_coordinate(sample.solid_pr());
         int vertices_count = v.size();
         LveModel::Builder modelBuilder{};
         for (size_t i = 0; i < vertices_count; i += 6)
@@ -213,7 +214,7 @@ void lve::FirstApp::init_imgui(GLFWwindow* window, VkFormat format, VkDescriptor
 
     vkCreateRenderPass(device, &renderPassCreateInfo, nullptr, &renderPass);
 
-    //ÕâÀïÊ¹ÓÃÁËimguiµÄÒ»¸ö·ÖÖ§docking
+    //è¿™é‡Œä½¿ç”¨äº†imguiçš„ä¸€ä¸ªåˆ†æ”¯docking
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
     ImGuiIO& io = ImGui::GetIO();
@@ -305,7 +306,7 @@ void lve::FirstApp::draw_imgui()
                 static float inputValues[3] = { 0.0f, 0.0f, 0.0f };
                 for (int i = 0; i < IM_ARRAYSIZE(inputValues); i++) {
                     if (ImGui::InputFloat(fmt::format("##InputValue{}", i).c_str(), &inputValues[i])) {
-                        // Èç¹ûÓÃ»§ÊäÈëÁËÊýÖµ£¬Ôò¸üÐÂÄ£ÐÍµÄÖµ
+                        // å¦‚æžœç”¨æˆ·è¾“å…¥äº†æ•°å€¼ï¼Œåˆ™æ›´æ–°æ¨¡åž‹çš„å€¼
                         gameObjects.begin()->second.transform.rotation[i] = inputValues[i];
                     }
                 }
@@ -319,7 +320,7 @@ void lve::FirstApp::draw_imgui()
                 static float inputValues[3] = { 0.0f, 0.0f, 0.0f };
                 for (int i = 0; i < IM_ARRAYSIZE(inputValues); i++) {
                     if (ImGui::InputFloat(fmt::format("##InputValue{}", i).c_str(), &inputValues[i])) {
-                        // Èç¹ûÓÃ»§ÊäÈëÁËÊýÖµ£¬Ôò¸üÐÂÄ£ÐÍµÄÖµ
+                        // å¦‚æžœç”¨æˆ·è¾“å…¥äº†æ•°å€¼ï¼Œåˆ™æ›´æ–°æ¨¡åž‹çš„å€¼
                         gameObjects.begin()->second.transform.translation[i] = inputValues[i];
                     }
                 }
