@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="shaders">
+      <UniqueIdentifier>{7c37b5ef-fcaf-4010-a1e4-9f4cabecf3d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\system">
+      <UniqueIdentifier>{c638a301-f341-4e75-b183-7d12df1974f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\system">
+      <UniqueIdentifier>{1a3ed264-e107-4f9b-9de7-de7187c0e3be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="imgui">
+      <UniqueIdentifier>{21a73b60-2356-45a6-91fa-1b533649ee4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="fmt">
+      <UniqueIdentifier>{dc2d9880-848e-4281-b961-cd429cc9d42d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="first_app.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="lve_pipeline.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="test.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="lve_window.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="lve_device.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="lve_swap_chain.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="lve_model.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="lve_renderer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="lve_camera.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="keyboard_movement_controller.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="lve_game_object.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="lve_buffer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="lve_descriptors.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="simple_render_system.cpp">
+      <Filter>源文件\system</Filter>
+    </ClCompile>
+    <ClCompile Include="point_light_system.cpp">
+      <Filter>源文件\system</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_tables.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_widgets.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_demo.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_draw.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_impl_glfw.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_impl_vulkan.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Sweep.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelingData.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="EulerOperation.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="first_app.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="lve_pipeline.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="lve_window.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="lve_device.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="lve_swap_chain.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="lve_model.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="lve_game_object.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="lve_renderer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="lve_camera.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="keyboard_movement_controller.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="lve_utils.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="lve_buffer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="lve_frame_info.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="lve_descriptors.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="simple_render_system.h">
+      <Filter>头文件\system</Filter>
+    </ClInclude>
+    <ClInclude Include="point_light_system.h">
+      <Filter>头文件\system</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_internal.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\gui.hpp">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imconfig.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_impl_glfw.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_impl_vulkan.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="fmt\format.h">
+      <Filter>fmt</Filter>
+    </ClInclude>
+    <ClInclude Include="EulerOperation.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="HalfEdgeDataStructure.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelingData.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Sweep.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="simple_shader.vert">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="simple_shader.frag">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="compile.bat" />
+    <None Include="simple_shader.vert.spv">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="simple_shader.frag.spv">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="point_light.vert">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="point_light.frag.spv">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="point_light.vert.spv">
+      <Filter>shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="quad.obj">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="point_light.frag">
+      <Filter>shaders</Filter>
+    </Text>
+    <Text Include="in.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+  </ItemGroup>
+</Project>
