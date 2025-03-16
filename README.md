@@ -2,8 +2,8 @@
 基于半边数据结构的三维建模项目，能基于 mvfs, mev, mef, kemr 和 kfmrh 5个基本欧拉操作和 sweep 扫掠操作生成对应的立方体，用Vulkan实现可视化。
 
 # 环境
-ide：visual studio 2022
 图形api：vulkan
+
 外部库：glfw3.3.8,glm0.9.9.8,imgui,fmt
 
 # 项目结构
